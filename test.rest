@@ -1,0 +1,19 @@
+POST http://localhost:3001/login/jwt
+Content-Type: application/json
+
+{
+    "email": "mail34322@gmail.com",
+    "password": "sifra5434"
+}
+
+###
+GET http://localhost:3001/welcome
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1haWwzNDMyMkBnbWFpbC5jb20iLCJpZCI6IjYyZTk0ZDljYTBjODc0ZTU1YWEzOTJjZCIsIm5hbWUiOiJQZXJvIiwiaWF0IjoxNjYzMDg2NTcxLCJleHAiOjE2NjMwOTM3NzF9.l_HAacZoJgbcFob7S5xfAqrIUMwNcFGbfjhcKErRyyo
+
+###
+GET http://localhost:3001/welcome
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1haWwzNDMyMkBnbWFpbC5jb20iLCJpZCI6IjYyZTk0ZDljYTBjODc0ZTU1YWEzOTJjZCIsIm5hbWUiOiJQZXJvIiwiaWF0IjoxNjYzMDg2NTcxLCJleHAiOjE2NjMwOTM3NzF9.l_HAacZoJgbcFob7S5xfAqrIUMwNcFGbfjhcKErRyyo"
+}
