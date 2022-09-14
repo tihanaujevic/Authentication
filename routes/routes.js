@@ -20,6 +20,14 @@ router.get("/welcomeCookie", cookie.welcomeCookie, (req, res) => {
     res.status(200).send("Cookie autentikacija");
   });
 
+router.get('/welcomea', (req,res) => {
+    res.send(req.oidc.isAuthenticated() ? 'Autentikacija pomocu Auth0' : 'Logged out')
+})
+
+router.get('/', (req,res) => {
+    res.send(req.oidc.isAuthenticated() ? 'Autentikacija pomocu Auth0' : 'Logged out')
+})
+
 router.get('/setcookie',(req, res) => {
     res.cookie(`Cookie token name`,`encrypted cookie string Value`,{
         maxAge: 5000,
