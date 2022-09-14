@@ -2,12 +2,15 @@ import express from 'express'
 import loginJWT from '../controllers/jwt.js'
 import auth from '../middleware/auth.js'
 import cookie from '../controllers/cookie.js'
+import loginGoogle from '../controllers/google.js'
 
 const router=express.Router()
 
 router.post('/login/jwt', loginJWT)
 
 router.post('/login/cookie', cookie.loginCookie)
+
+router.post('/login/google', loginGoogle)
 
 router.get("/welcome", auth, (req, res) => {
     res.status(200).send("JWT autentikacija");

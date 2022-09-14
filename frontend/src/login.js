@@ -1,7 +1,6 @@
 import React from "react";
 
 function Login (props) {
-
     return (
       <div className="auth-wrapper">
           <div className="auth-inner">

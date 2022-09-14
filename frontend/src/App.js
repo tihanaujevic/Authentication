@@ -6,6 +6,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Welcome from './welcome.js'
+import Home from './home.js'
 
 function App(){
 
@@ -13,8 +14,10 @@ function App(){
   
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [way, setWay] = useState("")
 
-/*   const prijava =() =>{
+  const prijava =() =>{
+    if(way==='jwt'){
     axios.post("http://localhost:3001/login/jwt", {email, password}).then((response)=>{
       if (response.data === "korisnik s ovim emailom ne postoji")
         alert("korisnik s ovim emailom ne postoji")
@@ -25,20 +28,26 @@ function App(){
         window.localStorage.setItem('korisnik', response.data)
         navigate('/welcome')
       }      
+    })}
+    else if(way==='cookie'){
+      axios.post("http://localhost:3001/login/cookie", {email, password},  { withCredentials: true, credentials: 'include' }).then((response)=>{
+      console.log(response)
+      navigate('/welcome')
+    }).catch((error)=>{
+      if(error.response.statusText === 'Unauthorized'){
+        alert('Neispravni podaci')
+      }
     })
-  } */
-  const prijava =() =>{
-    axios.post("http://localhost:3001/login/cookie", {email, password},  { withCredentials: true, credentials: 'include' }).then((response)=>{
-      navigate('/welcome')   
-      console.log(response.cookies)   
-    })
-  }
-  
+    }
+  } 
+
+
   return (
-    <div className='App'>     
+    <div className='App'>    
             <Routes>
+              <Route path='/' element={<Home setWay={setWay}/>}></Route>
               <Route path='/login' element={<Login prijava={prijava} setEmail={setEmail} setPassword={setPassword}/>}></Route>
-              <Route path='/welcome' element={<Welcome/>}></Route>
+              <Route path='/welcome' element={<Welcome way={way}/>}></Route>
             </Routes> 
   </div>
   );    

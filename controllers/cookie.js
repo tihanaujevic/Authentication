@@ -27,10 +27,10 @@ async function loginCookie(req,res){
         pronadenKorisnik = await Korisnik.findOne({email:email})
 
         if(!pronadenKorisnik)
-            return res.send('korisnik s ovim emailom ne postoji')
+            return res.status(401).send('korisnik s ovim emailom ne postoji')
 
         if(!(await bcrypt.compare(password, pronadenKorisnik.password)))
-            return res.send('Kriva lozinka')
+            return res.status(401).send('Kriva lozinka')
         console.log('logiran')
 
         const userToken = {
@@ -84,7 +84,7 @@ const welcomeCookie = (req,res) =>{
             res.status(401).end()
             return
         }
-        res.send(`Welcome  ${userSession.email}!`).end()
+        res.send(`Welcome ${userSession.email}! Autentikacija pomoću Cookiesa`).end()
 
     }
     catch(err){
