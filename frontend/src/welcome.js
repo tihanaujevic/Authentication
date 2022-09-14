@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 
 function Welcome (props) {
   //https://stackoverflow.com/questions/33702826/oauth-authorization-vs-authentication/33704657#33704657
+  //https://www.youtube.com/watch?v=GihQAC1I39Q
     const[odgovor, setOdgovor]= React.useState('')
     const navigate = useNavigate();
     function aj () {
