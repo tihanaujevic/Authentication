@@ -20,12 +20,13 @@ router.get("/welcomeCookie", cookie.welcomeCookie, (req, res) => {
     res.status(200).send("Cookie autentikacija");
   });
 
-router.get('/welcomea', (req,res) => {
-    res.send(req.oidc.isAuthenticated() ? 'Autentikacija pomocu Auth0' : 'Logged out')
-})
 
 router.get('/', (req,res) => {
-    res.send(req.oidc.isAuthenticated() ? 'Autentikacija pomocu Auth0' : 'Logged out')
+    if(req.oidc.isAuthenticated()){
+        res.redirect("http://localhost:3000/welcome")
+    }
+    else
+        res.redirect("http://localhost:3000/")
 })
 
 router.get('/setcookie',(req, res) => {

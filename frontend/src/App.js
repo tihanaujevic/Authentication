@@ -17,6 +17,7 @@ function App(){
   const [way, setWay] = useState("")
 
   const prijava =() =>{
+    console.log(way)
     if(way==='jwt'){
     axios.post("http://localhost:3001/login/jwt", {email, password}).then((response)=>{
       if (response.data === "korisnik s ovim emailom ne postoji")
@@ -33,6 +34,7 @@ function App(){
       axios.post("http://localhost:3001/login/cookie", {email, password},  { withCredentials: true, credentials: 'include' }).then((response)=>{
       console.log(response)
       navigate('/welcome')
+
     }).catch((error)=>{
       if(error.response.statusText === 'Unauthorized'){
         alert('Neispravni podaci')

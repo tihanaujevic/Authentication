@@ -10,6 +10,11 @@ function Home (props) {
         navigate('/login')
     }
 
+    function set2(way){
+      props.setWay(way)
+      window.location.href = 'http://localhost:3001/login'
+  }
+
     React.useEffect(()=>{
         window.google.accounts.id.initialize({
           client_id: "316639475242-0vg6lfpd6lgl8dmcuuoo2bvn046dnf1a.apps.googleusercontent.com",
@@ -29,10 +34,14 @@ function Home (props) {
       })      
     }
     return (
-      <div style={{'width':'200px', marginLeft: '43%', marginTop:'10%'}}>
+      <div>
+        <h1>Naslov</h1>
+      <div style={{'width':'200px', margin: 'auto', marginTop:'10%'}}>         
           <button onClick={()=>set('jwt')}>JWT</button><br/>
-          <button onClick={()=>set('cookie')}>Cookie</button>
+          <button onClick={()=>set('cookie')}>Cookie</button><br/>
+          <button onClick={()=>set2('auth0')}>Auth0</button>
           <div id="signInDiv"></div>
+      </div>
       </div>
     );
 };

@@ -7,11 +7,9 @@ function Welcome (props) {
   //https://www.youtube.com/watch?v=GihQAC1I39Q
     const[odgovor, setOdgovor]= React.useState('')
     const navigate = useNavigate();
-    function aj () {
-      navigate('/')
-    }
 
     React.useEffect(()=>{
+      console.log(props.way)
       if(props.way==='jwt'){
         const logiraniKorisnik = window.localStorage.getItem('korisnik')
         axios.get("http://localhost:3001/welcome",{headers: {Authorization: logiraniKorisnik}})
@@ -23,8 +21,8 @@ function Welcome (props) {
       else if(props.way==='google'){
         setOdgovor('Autentikacija pomoću Googlea')
       }
-      else 
-        aj()
+
+
     }, [])
 
     return (
